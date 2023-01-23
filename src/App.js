@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Card, CardBody, CardHeader, Heading, Text } from "@chakra-ui/react"
 
@@ -11,11 +12,12 @@ function App() {
   }, [])
   return (
     <Router>
-      <Card className='p-10 '>
+      <Navbar />
+      <Card className='p-10'>
         {surats.map((surat) => {
           return <div className="p-5 mb-5 shadow-sm border " key={surat.nomor}>
             <CardHeader >
-              <Heading size="md">
+              <Heading size="md" className="border-b pb-1 mb-2">
                 {surat.nama} ({surat.nama_latin})
               </Heading>
             </CardHeader>
