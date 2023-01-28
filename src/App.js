@@ -1,38 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from "./components/Navbar"
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
-import { Card, CardBody, CardHeader, Heading, Text } from "@chakra-ui/react"
+import Main from "./pages/Main/Main"
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom"
 
 function App() {
-  const [surats, setSurats] = useState([])
-  useEffect(() => {
-    fetch("https://equran.id/api/surat/").then((res) => {
-      return res.json()
-    }).then((surat) => setSurats(surat)).catch((err) => err.message)
-  }, [])
   return (
-    <Router>
-      <Navbar />
-      <Card className='p-10'>
-        {surats.map((surat) => {
-          return <div className="p-5 mb-5 shadow-sm border " key={surat.nomor}>
-            <CardHeader >
-              <Heading size="md" className="border-b pb-1 mb-2">
-                {surat.nama} ({surat.nama_latin})
-              </Heading>
-            </CardHeader>
-            <CardBody>
-              <Text>
-                <p >Artinya : {surat.arti}</p>
-                <button className='p-2 mt-1 shadow-sm rounded-sm border'>
-                  <Link to={`/surat/${surat.nomor}`}>Mulai Membaca :]</Link>
-                </button>
-              </Text>
-            </CardBody>
-          </div>
-        })}
-      </Card>
-    </Router>
+    <div className='min-h-fit'>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='*' element={<Main />}></Route>
+          <Route path={`/surat/1`} element={<Main />}></Route>
+        </Routes>
+      </Router>
+    </div >
   );
 }
 
