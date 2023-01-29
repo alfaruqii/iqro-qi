@@ -5,10 +5,14 @@ import { Link } from "react-router-dom"
 import { Loading } from "./Loading"
 
 export const Search = () => {
+  // const [surat, setSurat] = useState(0)
   const { data, status } = useQuery({
     queryKey: ["search"],
     queryFn: () => FetchApi()
   })
+  // const searchSurat = (nomor) => {
+  //   setSurat(nomor)
+  // }
   console.log(data)
   if (status === "loading") return <Loading />
   if (status === "success") return (
@@ -21,7 +25,7 @@ export const Search = () => {
           {data.map((surat) => {
             return (
               <>
-                <option className="bg-gray-500">
+                <option value={surat?.nomor} className="bg-gray-500">
                   {surat.nama_latin}
                 </option>
               </>
