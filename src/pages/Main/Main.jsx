@@ -1,24 +1,24 @@
 import { Card, CardBody, CardHeader, Heading, Text } from "@chakra-ui/react"
 import React from 'react';
-import { IqroContext } from "../../IqroProvider"
+import { Loading } from "../../components/Loading"
 import { Link } from "react-router-dom"
 import { useQuery } from "react-query"
 import { FetchApi } from "../../FetchApi"
 
 export default function Main() {
-  const query = useQuery(
+  const { data, status, isSuccess, isLoading } = useQuery(
     {
       queryKey: ["surats"],
       queryFn: () => FetchApi(),
       staleTime: 10000 * 600
     }
   )
-  if (query.status === "loading") {
-    return <div>Loading</div>
+  if (status === "loading") {
+    return <Loading />
   }
   return <>
     <Card className='p-10'>
-      {query.data.map((surat) => {
+      {isSuccess && data?.map((surat) => {
         return <div className="p-5 mb-5 shadow-sm border " key={surat.nomor}>
           <CardHeader >
             <Heading size="md" className="border-b pb-1 mb-2">

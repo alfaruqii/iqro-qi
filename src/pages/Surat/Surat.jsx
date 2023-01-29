@@ -1,23 +1,55 @@
 import React from 'react';
 import { useQuery } from "react-query"
+import { Loading } from "../../components/Loading"
 import { FetchApi } from "../../FetchApi"
 import { useParams } from "react-router-dom"
 
 export default function Surat() {
   const { nomor } = useParams()
   // const specificSurat = state.nomor[Object.keys(nomor)]
-  const { data, isLoading } = useQuery({
-    queryKey: ["surats", "surat"],
-    queryFn: () => FetchApi(nomor)
+  const { data, status, isFetching } = useQuery({
+    queryKey: ["surats", nomor],
+    queryFn: () => FetchApi(nomor),
   })
+  if (isFetching) return <Loading />
   console.log(data)
   return (
-    <div>
-      <div className='flex'>
-        <h1>
-          {data.nomor}
-        </h1>
-        <p>{data.nama}</p>
+    <div className='p-4'>
+      <div className=''>
+        <div className='flex flex-row pb-3'>
+          <h1 className='mr-2'>
+            {data.nomor}.
+          </h1>
+          <p className='mr-1'>
+            {data.nama_latin}
+          </p>
+          <p>
+            ({data.nama})
+          </p>
+        </div>
+        <div className='grid gap-8'>
+          {data.ayat.map((item) => {
+            return (
+              <div className='rounded-sm p-3 border'>
+                <p className='text-xl pb-5'>
+                  {item.ar}
+                </p>
+                <div className='pb-5'>
+                  <p className='font-bold'>
+                    Latin :
+                  </p>
+                  {item.tr}
+                </div>
+                <div>
+                  <p className='font-bold'>
+                    Arti :
+                  </p>
+                  {item.idn}
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
