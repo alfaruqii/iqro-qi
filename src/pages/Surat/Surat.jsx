@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"
 export default function Surat() {
   const { nomor } = useParams()
   // const specificSurat = state.nomor[Object.keys(nomor)]
-  const { data, isLoading, status, isFetching } = useQuery({
+  const { data, status, } = useQuery({
     queryKey: ["surats", nomor],
     queryFn: () => FetchApi(nomor),
   })
