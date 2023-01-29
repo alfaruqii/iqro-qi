@@ -7,19 +7,21 @@ import { useParams } from "react-router-dom"
 export default function Surat() {
   const { nomor } = useParams()
   // const specificSurat = state.nomor[Object.keys(nomor)]
-  const { data, isFetching } = useQuery({
+  const { data, isLoading, status, isFetching } = useQuery({
     queryKey: ["surats", nomor],
     queryFn: () => FetchApi(nomor),
   })
-  if (isFetching === true) return <Loading />
-  return (
+  // console.log(isLoading)
+  if (status === "loading") return <Loading />
+  // if (isLoading === true) return <Loading />
+  if (status === "success") return (
     <div className='p-4'>
       <div className=''>
         <div className='flex flex-row pb-3'>
           <h1 className='mr-2'>
             {data.nomor}.
           </h1>
-          <p className='mr-1'>
+          <p className='mr-1 text-xl font-am'>
             {data.nama}
           </p>
           <p>
@@ -35,7 +37,7 @@ export default function Surat() {
                     Ayat ke {item.nomor}
                   </p>
                 </div>
-                <p className='text-xl pb-5'>
+                <p className='text-2xl pb-5 sm:text-2xl font-am'>
                   {item.ar}
                 </p>
                 <div className='pb-5'>

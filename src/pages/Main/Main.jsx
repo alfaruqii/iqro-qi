@@ -22,7 +22,7 @@ export default function Main() {
         return <div className="p-5 mb-5 shadow-sm border " key={surat.nomor}>
           <CardHeader >
             <Heading size="md" className="border-b pb-1 mb-2">
-              {surat.nama} ({surat.nama_latin})
+              <span className="font-am">{surat.nama}</span> ({surat.nama_latin})
             </Heading>
           </CardHeader>
           <CardBody>

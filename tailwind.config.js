@@ -3,8 +3,14 @@ module.exports = {
     "./public/**/*.html",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  mode: "jit",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        gl: "Fraunces",
+        am: "Noto Naskh Arabic"
+      }
+    },
   },
   plugins: [],
 }
