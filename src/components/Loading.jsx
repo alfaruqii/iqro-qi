@@ -2,6 +2,8 @@ import { Spinner } from "@chakra-ui/react"
 
 export const Loading = () => {
   return (
-    < Spinner className="w-10" />
+    <div className="min-h-screen flex items-center justify-center">
+      < Spinner variant="string" size="xl" w-full />
+    </div>
   )
 }

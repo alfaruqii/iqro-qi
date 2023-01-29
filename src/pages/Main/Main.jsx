@@ -6,14 +6,14 @@ import { useQuery } from "react-query"
 import { FetchApi } from "../../FetchApi"
 
 export default function Main() {
-  const { data, status, isSuccess, isLoading } = useQuery(
+  const { data, isSuccess, isFetching } = useQuery(
     {
       queryKey: ["surats"],
       queryFn: () => FetchApi(),
       staleTime: 10000 * 600
     }
   )
-  if (isLoading === true) {
+  if (isFetching === true) {
     return <Loading />
   }
   return <>

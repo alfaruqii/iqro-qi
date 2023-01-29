@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"
 export default function Surat() {
   const { nomor } = useParams()
   // const specificSurat = state.nomor[Object.keys(nomor)]
-  const { data, status, isFetching } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ["surats", nomor],
     queryFn: () => FetchApi(nomor),
   })
@@ -29,7 +29,7 @@ export default function Surat() {
         <div className='grid gap-8'>
           {data.ayat.map((item) => {
             return (
-              <div className='rounded-sm p-3 border'>
+              <div className='rounded-sm p-3 border' key={item.nomor}>
                 <div className='pb-5'>
                   <p className='border-b-2 border-gray-400 w-fit'>
                     Ayat ke {item.nomor}

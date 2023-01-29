@@ -10,19 +10,19 @@ import { Link } from "react-router-dom"
 
 export default function Navbar() {
   return (
-    <div className="sticky backdrop-blur-md p-4 z-[1000] top-0 border flex items-center justify-between">
+    <div className="sticky backdrop-blur-xl p-4 z-[1000] w-full top-0 border flex items-center sm:justify-around justify-between">
       <div>
-        <button>
+        <button className='font-bold'>
           <Link to="/">
             Baca Quran
           </Link>
         </button>
       </div>
-      <div>
+      <div className='sm:hidden'>
         <Menu className="relative">
           < MenuButton
-            className='border rounded-sm'
-            boxSize={35}
+            className='border rounded'
+            boxSize={40}
             as={IconButton}
             aria-label='Options'
             icon={<HamburgerIcon />}
@@ -35,6 +35,11 @@ export default function Navbar() {
             <MenuItem>Audio Quran</MenuItem>
           </MenuList>
         </Menu>
+      </div>
+      <div className='hidden sm:flex '>
+        <div>
+          <button>Search</button>
+        </div>
       </div>
     </div>
   )
