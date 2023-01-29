@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query/devtools"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 const queryClient = new QueryClient()
@@ -9,6 +10,7 @@ const queryClient = new QueryClient()
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <App />
+    <ReactQueryDevtools />
   </QueryClientProvider>
   , document.getElementById('root'));
 

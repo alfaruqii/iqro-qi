@@ -1,15 +1,24 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom"
-import React, { useContext } from 'react';
-import { IqroContext } from "../../IqroProvider"
+import React from 'react';
+import { useQuery } from "react-query"
+import { FetchApi } from "../../FetchApi"
+import { useParams } from "react-router-dom"
 
-export default function Surat(props) {
-  // const navigate = useNavigate()
+export default function Surat() {
+  const { nomor } = useParams()
   // const specificSurat = state.nomor[Object.keys(nomor)]
-  console.log(props.location)
-  const surats = useContext(IqroContext)
+  const { data, isLoading } = useQuery({
+    queryKey: ["surats", "surat"],
+    queryFn: () => FetchApi(nomor)
+  })
+  console.log(data)
   return (
     <div>
-      {/* {surats[specificSurat - 1].nama} */}
+      <div className='flex'>
+        <h1>
+          {data.nomor}
+        </h1>
+        <p>{data.nama}</p>
+      </div>
     </div>
   )
 }

@@ -10,11 +10,12 @@ export default function Main() {
     {
       queryKey: ["surats"],
       queryFn: () => FetchApi(),
-      staleTime: 10000
+      staleTime: 10000 * 600
     }
   )
-  console.log(query)
-  if (query.status === "loading") return <div>Loading</div>
+  if (query.status === "loading") {
+    return <div>Loading</div>
+  }
   return <>
     <Card className='p-10'>
       {query.data.map((surat) => {

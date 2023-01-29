@@ -3,12 +3,9 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
+  IconButton,
 } from '@chakra-ui/react'
-import HamburgerIcon from "@chakra-ui/react"
+import { HamburgerIcon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 
 export default function Navbar() {
@@ -23,10 +20,13 @@ export default function Navbar() {
       </div>
       <div>
         <Menu className="relative">
-          <Menu
+          < MenuButton
+            className='border rounded-sm'
+            boxSize={35}
+            as={IconButton}
+            aria-label='Options'
             icon={<HamburgerIcon />}
-            variant='outline' Button
-          />
+            variant='outline' />
           <MenuList className='p-4 backdrop-blur-md text-left pr-12 mt-3 border '>
             <MenuItem>
               <Link to="/surat/1">Search</Link>
