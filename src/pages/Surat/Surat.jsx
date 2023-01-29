@@ -11,8 +11,7 @@ export default function Surat() {
     queryKey: ["surats", nomor],
     queryFn: () => FetchApi(nomor),
   })
-  if (isFetching) return <Loading />
-  console.log(data)
+  if (isFetching === true) return <Loading />
   return (
     <div className='p-4'>
       <div className=''>
@@ -21,16 +20,21 @@ export default function Surat() {
             {data.nomor}.
           </h1>
           <p className='mr-1'>
-            {data.nama_latin}
+            {data.nama}
           </p>
           <p>
-            ({data.nama})
+            ({data.nama_latin})
           </p>
         </div>
         <div className='grid gap-8'>
           {data.ayat.map((item) => {
             return (
               <div className='rounded-sm p-3 border'>
+                <div className='pb-5'>
+                  <p className='border-b-2 border-gray-400 w-fit'>
+                    Ayat ke {item.nomor}
+                  </p>
+                </div>
                 <p className='text-xl pb-5'>
                   {item.ar}
                 </p>

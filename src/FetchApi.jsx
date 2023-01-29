@@ -3,7 +3,7 @@ import axios from "axios"
 
 
 export const FetchApi = async (param) => {
-  const data = param ? await axios.get(`https://equran.id/api/surat/${param}`)
+  const data = param ? await axios.get(`https://equran.id/api/surat/${param}?`)
     .then((res) => {
       return res.data
     })

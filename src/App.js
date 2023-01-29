@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Main />}></Route>
+          <Route path='*' element={<Main />}></Route>
           <Route path={`surat/:nomor`} element={<Surat />}></Route>
         </Routes>
       </Router>

@@ -13,7 +13,7 @@ export default function Main() {
       staleTime: 10000 * 600
     }
   )
-  if (status === "loading") {
+  if (isLoading === true) {
     return <Loading />
   }
   return <>
