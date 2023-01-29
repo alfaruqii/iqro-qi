@@ -8,6 +8,7 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from '@chakra-ui/react'
+import HamburgerIcon from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 export default function Navbar() {
@@ -22,9 +23,10 @@ export default function Navbar() {
       </div>
       <div>
         <Menu className="relative">
-          <MenuButton >
-            Others
-          </MenuButton>
+          <Menu
+            icon={<HamburgerIcon />}
+            variant='outline' Button
+          />
           <MenuList className='p-4 backdrop-blur-md text-left pr-12 mt-3 border '>
             <MenuItem>
               <Link to="/surat/1">Search</Link>
