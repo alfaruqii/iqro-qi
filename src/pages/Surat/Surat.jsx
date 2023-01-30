@@ -56,7 +56,7 @@ export default function Surat() {
                 </div>
                 <div>
                   <button className='p-2 border rounded-sm mt-2'>
-                    <Link to={`/tafsir/${surat.nomor}`}>Baca Tafsir</Link>
+                    <Link to={`/tafsir/${nomor}`}>Baca Tafsir</Link>
                   </button>
                 </div>
               </div>
