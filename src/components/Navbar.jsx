@@ -8,7 +8,7 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons"
 import { Link } from "react-router-dom"
 
-export default function Navbar() {
+export const Navbar = () => {
   return (
     <div className="sticky backdrop-blur-2xl p-4 z-[1000] w-full top-0 border flex items-center sm:justify-around justify-around">
       <div>
