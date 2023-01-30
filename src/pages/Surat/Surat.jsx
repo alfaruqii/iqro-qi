@@ -4,10 +4,10 @@ import { useQuery } from "react-query"
 import { Loading } from "../../components/Loading"
 import { FetchApi } from "../../FetchApi"
 import { useParams } from "react-router-dom"
+import { Footer } from "../../components/Footer"
 
 export default function Surat() {
   const { nomor } = useParams()
-  console.log(nomor)
   // const specificSurat = state.nomor[Object.keys(nomor)]
   const { data, status, } = useQuery({
     queryKey: ["surats", nomor],
@@ -33,7 +33,7 @@ export default function Surat() {
         <div className='grid gap-8'>
           {data.ayat.map((surat) => {
             return (
-              <div className='rounded-sm p-3 border' key={surat.nomor}>
+              <div className='rounded-sm p-3 border shadow' key={surat.nomor}>
                 <div className='pb-5'>
                   <p className='border-b-2 border-gray-400 w-fit'>
                     Ayat ke {surat.nomor}
@@ -64,6 +64,7 @@ export default function Surat() {
           })}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

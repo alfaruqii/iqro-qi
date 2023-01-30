@@ -4,15 +4,15 @@ import { Loading } from "../../components/Loading"
 import { Link } from "react-router-dom"
 import { useQuery } from "react-query"
 import { FetchApi } from "../../FetchApi"
+import { Footer } from "../../components/Footer"
 
 export default function Main() {
-  const { data, status, isSuccess, isFetching } = useQuery(
+  const { data, status, isSuccess, } = useQuery(
     {
       queryKey: ["surats"],
       queryFn: () => FetchApi(),
     }
   )
-  console.log(data)
   if (status === "loading") {
     return <Loading />
   }
@@ -21,7 +21,7 @@ export default function Main() {
       {isSuccess && data?.map((surat) => {
         return <div className="p-5 mb-5 shadow-sm border " key={surat.nomor}>
           <CardHeader >
-            <Heading size="md" className="border-b pb-1 mb-2">
+            <Heading size="md" className="border-b-2 border-gray-400 w-fit pb-1 mb-2">
               <span className="font-am">{surat.nama}</span> ({surat.nama_latin})
             </Heading>
           </CardHeader>
@@ -35,6 +35,7 @@ export default function Main() {
           </CardBody>
         </div>
       })}
+      <Footer />
     </Card>
   </>
 }

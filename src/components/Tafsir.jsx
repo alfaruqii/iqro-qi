@@ -9,20 +9,20 @@ export const Tafsir = () => {
     queryKey: ["tafsir", nomor],
     queryFn: () => FetchApi(nomor, true)
   })
-  console.log(data)
   // console.log()
   if (status === "loading") return <Loading />
   if (status === "success") return (
     <div>
       <div className="p-4">
-        <div className="">
-          <p>{data.nama}</p>
+        <div className="flex">
+          <p className="mr-2">{data.nama}</p>
           <p>({data.nama_latin})</p>
         </div>
         <p>Arti : {data.arti}</p>
+        <p>Jumlah Ayat : {data.jumlah_ayat}</p>
         <p className="mb-2">Tempat turun : {data.tempat_turun}</p>
         {data.tafsir.map((taf) => {
-          return <div className="p-4 border mb-2">
+          return <div key={taf.ayat} className="p-4 border mb-4 shadow">
             <p className="font-bold">
               Ayat : {taf.ayat}
             </p>

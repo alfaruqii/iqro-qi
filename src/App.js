@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from "./components/Navbar"
 import { Search } from "./components/Search"
 import { Tafsir } from "./components/Tafsir"
+import { Footer } from "./components/Footer"
 import Main from "./pages/Main/Main"
 import Surat from "./pages/Surat/Surat"
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom"
