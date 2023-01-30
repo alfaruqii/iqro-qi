@@ -22,7 +22,7 @@ export const Tafsir = () => {
         <p>Jumlah Ayat : {data.jumlah_ayat}</p>
         <p className="mb-2">Tempat turun : {data.tempat_turun}</p>
         {data.tafsir.map((taf) => {
-          return <div key={taf.ayat} className="p-4 border mb-4 shadow">
+          return <div key={taf.ayat} className="p-4 border mb-4 shadow sm:mb-8">
             <p className="font-bold">
               Ayat : {taf.ayat}
             </p>
