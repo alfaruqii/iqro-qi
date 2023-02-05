@@ -56,12 +56,20 @@ export default function Surat() {
             })}
           </div>
           <div className="flex justify-between mt-4">
-            <button className="p-2 border rounded-sm">
-              <Link to={`/surat/${Number(nomor) - 1}`}>Ayat Sebelumnya</Link>
-            </button>
-            <button className="p-2 border rounded-sm">
-              <Link to={`/surat/${Number(nomor) + 1}`}>Ayat Selanjutnya</Link>
-            </button>
+            {Number(nomor !== 1) ? (
+              <button className="p-2 border rounded-sm">
+                <Link to={`/surat/${Number(nomor) - 1}`}>Ayat Sebelumnya</Link>
+              </button>
+            ) : (
+              ""
+            )}
+            {Number(nomor !== 114) ? (
+              <button className="p-2 border rounded-sm">
+                <Link to={`/surat/${Number(nomor) + 1}`}>Ayat Selanjutnya</Link>
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <Footer />
