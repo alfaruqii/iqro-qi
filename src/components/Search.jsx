@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { FetchApi } from "../FetchApi";
 import { Link } from "react-router-dom";
@@ -11,9 +11,10 @@ export const Search = () => {
     queryKey: ["search"],
     queryFn: () => FetchApi(),
   });
-  // const selectSurat = (nomor) => {
-  //   setSelectedSurat(nomor);
-  // };
+  const selectSurat = (nomor) => {
+    setSelectedSurat(nomor);
+  };
+  console.log(selectedSurat);
   if (status === "loading") return <Loading />;
   if (status === "success")
     return (
@@ -23,18 +24,19 @@ export const Search = () => {
             <div className="mb-2">
               <p>Search Surat To Read</p>
             </div>
-            <select className="p-2 border rounded-sm">
+            <select
+              onChange={(e) => selectSurat(e.target.value)}
+              className="p-2 border rounded-sm"
+            >
               {data.data.map((surat) => {
                 return (
-                  <>
-                    <option
-                      key={surat.nomor}
-                      onClick={() => setSelectedSurat(surat.nomor)}
-                      className="bg-gray-500"
-                    >
-                      {surat.namaLatin}
-                    </option>
-                  </>
+                  <option
+                    key={surat.nomor}
+                    value={surat.nomor}
+                    className="bg-gray-500"
+                  >
+                    {surat.namaLatin}
+                  </option>
                 );
               })}
             </select>
