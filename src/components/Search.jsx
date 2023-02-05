@@ -11,9 +11,9 @@ export const Search = () => {
     queryKey: ["search"],
     queryFn: () => FetchApi(),
   });
-  const selectSurat = (nomor) => {
-    setSelectedSurat(nomor);
-  };
+  // const selectSurat = (nomor) => {
+  //   setSelectedSurat(nomor);
+  // };
   if (status === "loading") return <Loading />;
   if (status === "success")
     return (
@@ -29,7 +29,7 @@ export const Search = () => {
                   <>
                     <option
                       key={surat.nomor}
-                      onClick={() => selectSurat(surat.nomor)}
+                      onClick={() => setSelectedSurat(surat.nomor)}
                       className="bg-gray-500"
                     >
                       {surat.namaLatin}
