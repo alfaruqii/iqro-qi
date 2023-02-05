@@ -15,6 +15,7 @@ export default function Surat() {
   });
   if (status === "loading") return <Loading />;
   if (status === "success") console.log(data.data);
+  console.log(nomor);
   return (
     <div className="p-4">
       <div className="">
@@ -27,7 +28,7 @@ export default function Surat() {
           {data.data.ayat.map((surat) => {
             return (
               <div
-                className="rounded-sm p-3 border shadow"
+                className="rounded-sm p-3 border shadow-sm"
                 key={surat.nomorAyat}
               >
                 <div className="pb-5">
@@ -54,6 +55,14 @@ export default function Surat() {
               </div>
             );
           })}
+        </div>
+        <div className="flex justify-between mt-4">
+          <button className="p-2 border rounded-sm">
+            <Link to={`/surat/${Number(nomor) - 1}`}>Ayat Sebelumnya</Link>
+          </button>
+          <button className="p-2 border rounded-sm">
+            <Link to={`/surat/${Number(nomor) + 1}`}>Ayat Selanjutnya</Link>
+          </button>
         </div>
       </div>
       <Footer />
