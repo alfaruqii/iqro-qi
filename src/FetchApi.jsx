@@ -1,24 +1,37 @@
-import axios from "axios"
-
+import axios from "axios";
 
 export const FetchApi = async (nomor, tafsir = false) => {
-  let data
+  let data;
   if (tafsir !== false) {
-    await axios(`https://equran.id/api/tafsir/${nomor}`)
-      .then((res) => {
-        data = res.data
+    await axios
+      .request({
+        url: `https://equran.id/api/v2/tafsir/${nomor}`,
+        method: "get",
       })
-      .catch((err) => err.message)
+      .then((res) => {
+        data = res.data;
+      })
+      .catch((err) => err.message);
   } else if (nomor) {
-    await axios.get(`https://equran.id/api/surat/${nomor}`)
+    await axios
+      .request({
+        url: `https://equran.id/api/v2/surat/${nomor}`,
+        method: "get",
+      })
       .then((res) => {
-        data = res.data
-      }).catch((err) => err.message)
+        data = res.data;
+      })
+      .catch((err) => err.message);
   } else {
-    await axios.get(`https://equran.id/api/surat/`)
+    await axios
+      .request({
+        url: `https://equran.id/api/v2/surat`,
+        method: "get",
+      })
       .then((res) => {
-        data = res.data
-      }).catch((err) => err.message)
+        data = res.data;
+      })
+      .catch((err) => err.message);
   }
-  return data
-}
+  return data;
+};
