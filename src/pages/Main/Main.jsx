@@ -26,7 +26,7 @@ export default function Main() {
                     size="md"
                     className="border-b-2 border-gray-400 w-fit pb-1 mb-2"
                   >
-                    <span className="font-am">{surat.nama}</span> (
+                    <span className="font-am text-2xl">{surat.nama}</span> (
                     {surat.namaLatin})
                   </Heading>
                 </CardHeader>

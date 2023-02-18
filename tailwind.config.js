@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         gl: "Fraunces",
-        am: "Noto Naskh Arabic"
+        am: "Amiri"
       }
     },
   },

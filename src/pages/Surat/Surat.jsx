@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Loading } from "../../components/Loading";
@@ -7,6 +8,14 @@ import { useParams } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 
 export default function Surat() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto"
+    })
+  }, [pathname])
   const { nomor } = useParams();
   // const specificSurat = state.nomor[Object.keys(nomor)]
   const { data, status } = useQuery({
@@ -20,8 +29,8 @@ export default function Surat() {
         <div className="">
           <div className="flex flex-row pb-3">
             <h1 className="mr-2">{data.data.nomor}.</h1>
-            <p className="mr-1 text-xl font-am">{data.data.nama}</p>
-            <p>({data.data.namaLatin})</p>
+            <p className="mr-1 text-2xl font-am sm:text-3xl">{data.data.nama}</p>
+            <p className="sm:text-xl">({data.data.namaLatin})</p>
           </div>
           <div className="grid gap-8">
             {data.data.ayat.map((surat) => {
@@ -35,7 +44,7 @@ export default function Surat() {
                       Ayat ke {surat.nomorAyat}
                     </p>
                   </div>
-                  <p className="text-2xl pb-5 sm:text-2xl font-am">
+                  <p className="text-2xl py-5 text-3xl font-am">
                     {surat.teksArab}
                   </p>
                   <div className="pb-5">
