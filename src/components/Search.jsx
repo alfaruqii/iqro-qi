@@ -35,7 +35,7 @@ export const Search = () => {
                     value={surat.nomor}
                     className="bg-gray-500"
                   >
-                    {surat.namaLatin}
+                    {surat.nomor}. {surat.namaLatin}
                   </option>
                 );
               })}
