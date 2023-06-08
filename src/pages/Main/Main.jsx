@@ -7,12 +7,21 @@ import { FetchApi } from "../../FetchApi";
 import { Footer } from "../../components/Footer";
 
 export default function Main() {
-  const { isLoading, data, status, isSuccess } = useQuery({
+  const {  data, status } = useQuery({
     queryKey: ["surats"],
     queryFn: () => FetchApi(),
   });
   if (status === "loading") {
     return <Loading />;
+  }
+  if(status === "error"){
+    return (
+    <div className="min-h-screen flex items-center justify-center">
+        <h1>
+          There is an error, but don't worry is not your fault
+        </h1>
+      </div>
+    )
   }
   if (status === "success")
     return (

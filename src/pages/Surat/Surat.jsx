@@ -17,7 +17,6 @@ export default function Surat() {
     })
   }, [pathname])
   const { nomor } = useParams();
-  // const specificSurat = state.nomor[Object.keys(nomor)]
   const { data, status } = useQuery({
     queryKey: ["surats", nomor],
     queryFn: () => FetchApi(nomor),
@@ -44,7 +43,7 @@ export default function Surat() {
                       Ayat ke {surat.nomorAyat}
                     </p>
                   </div>
-                  <p className="text-2xl py-5 text-3xl font-am">
+                  <p className="py-5 text-3xl font-am">
                     {surat.teksArab}
                   </p>
                   <div className="pb-5">
