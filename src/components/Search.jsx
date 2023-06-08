@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { FetchApi } from "../FetchApi";
 import { Link } from "react-router-dom";

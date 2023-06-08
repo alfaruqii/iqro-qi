@@ -1,6 +1,7 @@
 import { Card, CardBody, CardHeader, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { Loading } from "../../components/Loading";
+import { Error } from "../../components/Error";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { FetchApi } from "../../FetchApi";
@@ -15,13 +16,7 @@ export default function Main() {
     return <Loading />;
   }
   if(status === "error"){
-    return (
-    <div className="min-h-screen flex items-center justify-center">
-        <h1>
-          There is an error, but don't worry is not your fault
-        </h1>
-      </div>
-    )
+    return <Error/>
   }
   if (status === "success")
     return (
